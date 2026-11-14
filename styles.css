@@ -1,0 +1,494 @@
+/*
+  TrufLab
+  Concepto: laboratorio de chocolate. Fondo beige de papel de repostería,
+  marrón cacao para texto y botones, etiquetas en tipografía monoespaciada
+  como las de un cuaderno de lote.
+*/
+
+:root {
+  --bg: #eadbc2;
+  --surface: #f5ead6;
+  --fg: #3a2113;
+  --muted: #6e5240;
+  --line: #d2bc9b;
+  --brand: #5a2f1a;
+  --brand-fg: #f6ecda;
+  --band-bg: #4a2616;
+  --band-fg: #f3e6cf;
+  --band-muted: #dcc3a2;
+  --band-line: #6c4531;
+
+  --font-display: "Bricolage Grotesque", "Trebuchet MS", "Segoe UI", sans-serif;
+  --font-body: "DM Sans", "Segoe UI", system-ui, sans-serif;
+  --font-mono: "DM Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #22140d;
+    --surface: #2d1b12;
+    --fg: #f2e5cf;
+    --muted: #c7ac8e;
+    --line: #4b3426;
+    --brand: #d8a877;
+    --brand-fg: #2a1509;
+    --band-bg: #170b06;
+    --band-fg: #f2e5cf;
+    --band-muted: #c7ac8e;
+    --band-line: #3f2a1e;
+    color-scheme: dark;
+  }
+}
+
+:root[data-theme="dark"] {
+  --bg: #22140d;
+  --surface: #2d1b12;
+  --fg: #f2e5cf;
+  --muted: #c7ac8e;
+  --line: #4b3426;
+  --brand: #d8a877;
+  --brand-fg: #2a1509;
+  --band-bg: #170b06;
+  --band-fg: #f2e5cf;
+  --band-muted: #c7ac8e;
+  --band-line: #3f2a1e;
+  color-scheme: dark;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+h1,
+h2,
+h3 {
+  margin: 0;
+  font-family: var(--font-display);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  text-wrap: balance;
+}
+
+p {
+  margin: 0;
+  max-width: 62ch;
+}
+
+a {
+  color: inherit;
+}
+
+:focus-visible {
+  outline: 3px solid var(--brand);
+  outline-offset: 3px;
+}
+
+/* Contenedor: el margen lateral se define una sola vez aquí */
+.wrap {
+  width: 100%;
+  max-width: 1120px;
+  margin-inline: auto;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+/* Encabezado */
+.site-header {
+  border-bottom: 1px solid var(--line);
+}
+
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding-block: 0.5rem;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  text-decoration: none;
+}
+
+.brand img {
+  display: block;
+  width: auto;
+  height: clamp(96px, 14vw, 128px);
+}
+
+.nav {
+  display: flex;
+  gap: 1.4rem;
+  font-weight: 500;
+}
+
+.nav a {
+  text-decoration: none;
+  padding-block: 0.3rem;
+  border-bottom: 2px solid transparent;
+}
+
+.nav a:hover {
+  border-bottom-color: var(--brand);
+}
+
+/* Portada */
+.hero-inner {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  align-items: center;
+  padding-block: clamp(2rem, 6vw, 4.5rem);
+}
+
+.hero-copy {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1.1rem;
+  min-width: 0;
+}
+
+.hero h1 {
+  font-weight: 800;
+  font-size: clamp(2.3rem, 6.4vw, 4rem);
+}
+
+.lead {
+  font-size: 1.125rem;
+  color: var(--muted);
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 0.4rem;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.8rem 1.4rem;
+  border: 2px solid var(--brand);
+  border-radius: 10px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: transform 0.15s ease;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+}
+
+.btn-primary {
+  background: var(--brand);
+  color: var(--brand-fg);
+}
+
+.btn-ghost {
+  background: transparent;
+  color: var(--fg);
+}
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 0.4rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.chips li {
+  padding: 0.25rem 0.75rem;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--muted);
+}
+
+.hero-art {
+  min-width: 0;
+}
+
+.hero-art img {
+  display: block;
+  width: 100%;
+  max-width: 520px;
+  margin-inline: auto;
+}
+
+/* Propuesta de valor */
+.band {
+  background: var(--band-bg);
+  color: var(--band-fg);
+}
+
+.band-inner {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  padding-block: clamp(2.5rem, 6vw, 4rem);
+}
+
+.band .eyebrow {
+  color: var(--band-muted);
+}
+
+.band h2 {
+  margin-top: 0.6rem;
+  font-weight: 700;
+  font-size: clamp(1.6rem, 4vw, 2.3rem);
+}
+
+.value-list {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.value-list li {
+  min-width: 0;
+  padding-top: 1rem;
+  border-top: 1px solid var(--band-line);
+}
+
+.value-list h3 {
+  margin-bottom: 0.4rem;
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+
+.value-list p {
+  color: var(--band-muted);
+}
+
+/* Productos */
+.products-inner {
+  padding-block: clamp(2.5rem, 6vw, 4.5rem);
+}
+
+.section-head {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  margin-bottom: 2rem;
+}
+
+.section-head h2 {
+  font-weight: 800;
+  font-size: clamp(1.8rem, 4.5vw, 2.6rem);
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  overflow: hidden;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+}
+
+.card img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+}
+
+.card-body {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 0.55rem;
+  padding: 1.25rem;
+}
+
+.card h3 {
+  font-size: 1.45rem;
+  font-weight: 700;
+}
+
+.card p {
+  color: var(--muted);
+}
+
+.price-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.25rem 1rem;
+  margin-top: auto;
+  padding-top: 0.9rem;
+  border-top: 1px dashed var(--line);
+}
+
+.price {
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: var(--brand);
+  font-variant-numeric: tabular-nums;
+}
+
+.unit {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--muted);
+}
+
+/* Contacto */
+.contact {
+  background: var(--surface);
+  border-top: 1px solid var(--line);
+}
+
+.contact-inner {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  padding-block: clamp(2.5rem, 6vw, 4.5rem);
+}
+
+.contact-copy {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1rem;
+  min-width: 0;
+}
+
+.contact h2 {
+  font-weight: 800;
+  font-size: clamp(1.8rem, 4.5vw, 2.6rem);
+}
+
+.contact-list {
+  display: grid;
+  gap: 1rem;
+  margin: 0;
+  align-content: start;
+  min-width: 0;
+}
+
+.contact-list div {
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--line);
+}
+
+.contact-list dt {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.contact-list dd {
+  margin: 0.15rem 0 0;
+  font-weight: 500;
+  overflow-wrap: anywhere;
+}
+
+/* Pie */
+.site-footer {
+  border-top: 1px solid var(--line);
+  font-size: 0.875rem;
+  color: var(--muted);
+}
+
+.footer-inner {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 0.5rem 1rem;
+  padding-block: 1.25rem;
+}
+
+[id] {
+  scroll-margin-top: 1rem;
+}
+
+@media (min-width: 860px) {
+  .hero-inner {
+    grid-template-columns: 1.05fr 0.95fr;
+    gap: 3rem;
+  }
+
+  .band-inner {
+    grid-template-columns: 0.8fr 1.2fr;
+    gap: 3rem;
+  }
+
+  .value-list {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .cards {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .contact-inner {
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 3rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .btn {
+    transition: none;
+  }
+
+  .btn:hover {
+    transform: none;
+  }
+}
